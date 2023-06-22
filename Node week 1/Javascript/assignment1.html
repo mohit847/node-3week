@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login and Homepage</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f1f1f1;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #ffffff;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+    }
+
+    .container h2 {
+      margin-bottom: 20px;
+    }
+
+    .input-group {
+      margin-bottom: 15px;
+    }
+
+    .input-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    .input-group input[type="text"],
+    .input-group input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: #fff;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .navbar {
+      background-color: #333;
+      padding: 10px;
+    }
+
+    .navbar a {
+      color: #fff;
+      text-decoration: none;
+      margin-right: 10px;
+    }
+
+    .image-tile {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .about-me-section {
+      padding: 20px;
+      background-color: #ffffff;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+    }
+
+    .about-me-section h2 {
+      margin-bottom: 20px;
+    }
+
+    .about-me-section section {
+      margin-bottom: 20px;
+    }
+
+    .about-me-section section h3 {
+      margin-bottom: 10px;
+    }
+    .error-message {
+      color: #ff0000;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Task 1: Login Form -->
+  <div class="container" id="loginContainer">
+    <form id="loginForm">
+      <h2>Login</h2>
+      <div class="input-group">
+        <label for="username">Username:</label>
+        <input type="text" id="username" placeholder="Enter your username" required>
+      </div>
+      <div class="input-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" placeholder="Enter your password" required>
+      </div>
+      <button type="submit" id="loginBtn">Login</button>
+    </form>
+    <div id="errorContainer" class="error-message"></div>
+  </div>
+
+  <!-- Task 2: Homepage -->
+  <div id="homepage" style="display: none;">
+    <div class="navbar">
+      <a href="#" id="logoutBtn">Logout</a>
+    </div>
+    <div class="image-tile">
+      <img src="profile_picture.jpg" alt="Profile Picture" width="200">
+    </div>
+    <div class="about-me-section">
+        <h2>About Me</h2>
+        <section id="hobbies">
+          <h3>Hobbies</h3>
+          <ul>
+            <li>Playing guitar</li>
+            <li>Reading books</li>
+            <li>Painting</li>
+          </ul>
+        </section>
+        <section id="interests">
+          <h3>Interests</h3>
+          <ul>
+            <li>Technology</li>
+            <li>Photography</li>
+            <li>Traveling</li>
+          </ul>
+        </section>
+        <section id="personal-summary">
+          <h3>Personal Summary</h3>
+          <p>I am a passionate individual who loves exploring new things and constantly learning. I believe in seizing every opportunity that comes my way and pushing myself to grow personally and professionally.</p>
+        </section>
+        <section id="professional-summary">
+          <h3>Professional Summary</h3>
+          <p>I have a strong background in web development and enjoy working on front-end technologies. I have experience in creating responsive and user-friendly interfaces. I am also interested in UI/UX design and strive to create visually appealing and intuitive user experiences.</p>
+        </section>
+      </div>
+      
+  </div>
+
+  <script>
+    // Task 1: Login Form Validation and Homepage Display
+    document.getElementById("loginForm").addEventListener("submit", function(event) {
+      event.preventDefault(); // Prevent form submission
+
+      var username = document.getElementById("username").value;
+      var password = document.getElementById("password").value;
+
+      if (username === "" || password === "") {
+        displayErrorMessage("Please enter username and password.");
+      } else if (password.length < 8) {
+        displayErrorMessage("Password must be at least 8 characters long.");
+      } else {
+        // Hide login form and show homepage
+        document.getElementById("loginContainer").style.display = "none";
+        document.getElementById("homepage").style.display = "block";
+
+        // Display user inputs in an alert window
+        alert("Successfully Logged In\n\nUsername: " + username + "\nPassword: " + password);
+      }
+    });
+
+    // Task 2: Logout Functionality
+    document.getElementById("logoutBtn").addEventListener("click", function() {
+      // Show login form and hide homepage
+      document.getElementById("loginContainer").style.display = "block";
+      document.getElementById("homepage").style.display = "none";
+    });
+
+    // Task 3: Validating the Login Form and Adding Error Message
+    function displayErrorMessage(message) {
+      var errorContainer = document.getElementById("errorContainer");
+      errorContainer.textContent = message;
+    }
+  </script>
+</body>
+</html>
