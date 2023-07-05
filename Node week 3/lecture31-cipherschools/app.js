@@ -1,0 +1,1 @@
+//Just talked about the theory of how frontend backend get connected to database and how it works 
